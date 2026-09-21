@@ -48,6 +48,30 @@ function scalar(text: string): unknown {
   return value;
 }
 
+const blockHeader = /^[|>](?:[1-9][+-]?|[+-][1-9]?)?$/;
+
+function parseBlockScalar(lines: string[], start: number, indent: number, header: string): { value: string; index: number } {
+  let index = start;
+  const explicitIndent = header.match(/[1-9]/);
+  const firstContent = lines.slice(start).find((line) => line.trim());
+  const firstIndent = firstContent?.match(/^ */)?.[0].length ?? 0;
+  const contentIndent = explicitIndent ? indent + Number(explicitIndent[0])
+    : firstIndent > indent ? firstIndent : indent + 2;
+  const chunks: string[] = [];
+  while (index < lines.length) {
+    const line = lines[index];
+    if (line.trim() && (line.match(/^ */)?.[0].length ?? 0) < contentIndent) break;
+    chunks.push(line.slice(contentIndent));
+    index += 1;
+  }
+  let value = chunks.join(header.startsWith('>') ? ' ' : '\n') + (chunks.length ? '\n' : '');
+  if (!header.includes('+')) {
+    value = value.replace(/\n+$/, '');
+    if (!header.includes('-') && chunks.some((chunk) => chunk !== '')) value += '\n';
+  }
+  return { value, index };
+}
+
 function parseBlock(lines: string[], start: number, indent: number): { value: unknown; index: number } {
   let index = start;
   let container: unknown[] | Record<string, unknown> | undefined;
@@ -66,12 +90,20 @@ function parseBlock(lines: string[], start: number, indent: number): { value: un
         const child = parseBlock(lines, index + 1, indent + 2);
         container.push(child.value); index = child.index; continue;
       }
+      if (blockHeader.test(rest)) {
+        const child = parseBlockScalar(lines, index + 1, indent, rest);
+        container.push(child.value); index = child.index; continue;
+      }
       const inlineKey = keyOf(rest);
       if (inlineKey) {
         const item: Record<string, unknown> = {};
         const colon = rest.indexOf(':', inlineKey.indexOf(':') + 1);
         const after = rest.slice(colon + 1).trim();
-        if (after) item[inlineKey] = scalar(after);
+        if (blockHeader.test(after)) {
+          const child = parseBlockScalar(lines, index + 1, indent + 2, after);
+          item[inlineKey] = child.value; index = child.index - 1;
+        }
+        else if (after) item[inlineKey] = scalar(after);
         else {
           const child = parseBlock(lines, index + 1, indent + 4);
           item[inlineKey] = child.value; index = child.index - 1;
@@ -87,12 +119,9 @@ function parseBlock(lines: string[], start: number, indent: number): { value: un
     if (!key) { index += 1; continue; }
     const colon = text.indexOf(':', key.indexOf(':') + 1);
     const after = text.slice(colon + 1).trim();
-    if (['|-', '|', '>-', '>'].includes(after)) {
-      const chunks: string[] = []; index += 1;
-      while (index < lines.length && (lines[index].match(/^\s*/)?.[0].length ?? 0) > indent) {
-        chunks.push(lines[index].slice(Math.min(lines[index].length, indent + 2))); index += 1;
-      }
-      container[key] = chunks.join(after.startsWith('>') ? ' ' : '\n'); continue;
+    if (blockHeader.test(after)) {
+      const child = parseBlockScalar(lines, index + 1, indent, after);
+      container[key] = child.value; index = child.index; continue;
     }
     if (after) { container[key] = scalar(after); index += 1; continue; }
     const child = parseBlock(lines, index + 1, indent + 2);
@@ -102,15 +131,23 @@ function parseBlock(lines: string[], start: number, indent: number): { value: un
 }
 
 export function parseEntry(entry: TopLevelEntry): Record<string, unknown> {
-  return (parseBlock(entry.text.split(/\r?\n/), 0, 0).value ?? {}) as Record<string, unknown>;
+  return (parseBlock(entry.text.replace(/\r?\n$/, '').split(/\r?\n/), 0, 0).value ?? {}) as Record<string, unknown>;
 }
 
 const yamlReservedInitials = new Set('@{}[]:#&*!%|>?-<=,`');
 
 function quote(value: unknown): string {
-  const text = String(value);
-  if (text === '' || yamlReservedInitials.has(text[0]) || /^(?:null|true|false|~|-?\d+(?:\.\d+)?)$/.test(text) || /[:#[\]{},&*!|>'"%@`]|\s$|^\s/.test(text)) return JSON.stringify(text);
-  return text;
+  return typeof value === 'string' ? JSON.stringify(value) : String(value);
+}
+
+function renderScalar(value: unknown, indent: number): string {
+  if (typeof value !== 'string' || !value.includes('\n')) return quote(value) + '\n';
+  const trailingNewlines = value.match(/\n+$/)?.[0].length ?? 0;
+  const chomping = trailingNewlines === 0 ? '-' : trailingNewlines > 1 || /^\n+$/.test(value) ? '+' : '';
+  // An explicit indentation indicator preserves leading spaces in the content.
+  const indentation = /^[ \t]/m.test(value) ? '2' : '';
+  const lines = (value.endsWith('\n') ? value.slice(0, -1) : value).split('\n');
+  return `|${indentation}${chomping}\n` + lines.map((line) => ' '.repeat(indent + 2) + line + '\n').join('');
 }
 
 function quoteKey(key: string): string {
@@ -128,7 +165,7 @@ export function dumpYaml(value: unknown, indent = 0): string {
         const tail = rendered.slice(1).filter(Boolean);
         return pad + '- ' + rendered[0].trimStart() + '\n' + tail.join('\n') + (tail.length ? '\n' : '');
       }
-      return pad + '- ' + quote(item) + '\n';
+      return pad + '- ' + renderScalar(item, indent);
     }).join('');
   }
   if (value && typeof value === 'object') {
@@ -136,11 +173,9 @@ export function dumpYaml(value: unknown, indent = 0): string {
     if (!entries.length) return pad + '{}\n';
     return entries.map(([key, item]) => {
       const renderedKey = quoteKey(key);
-      if (typeof item === 'string' && item.includes('\n')) return `${pad}${renderedKey}: |-\n${item.split('\n').map((line) => ' '.repeat(indent + 2) + line).join('\n')}\n`;
       if (item && typeof item === 'object') return `${pad}${renderedKey}:\n${dumpYaml(item, indent + 2)}`;
-      if (item === null) return `${pad}${renderedKey}: null\n`;
-      return `${pad}${renderedKey}: ${typeof item === 'string' ? quote(item) : String(item)}\n`;
+      return `${pad}${renderedKey}: ${renderScalar(item, indent)}`;
     }).join('');
   }
-  return pad + quote(value) + '\n';
+  return pad + renderScalar(value, indent);
 }
