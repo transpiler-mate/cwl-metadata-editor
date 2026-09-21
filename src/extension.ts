@@ -20,14 +20,23 @@ function webviewHtml(template: string, webview: vscode.Webview): string {
     .replaceAll('__NONCE__', token);
 }
 
-async function openEditor(context: vscode.ExtensionContext): Promise<void> {
-  const editor = vscode.window.activeTextEditor;
-  if (!editor || !isCwl(editor.document)) {
+async function openEditor(context: vscode.ExtensionContext, uri?: vscode.Uri): Promise<void> {
+  let document: vscode.TextDocument | undefined;
+  try {
+    document = uri
+      ? await vscode.workspace.openTextDocument(uri)
+      : vscode.window.activeTextEditor?.document;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    void vscode.window.showErrorMessage(`Unable to open CWL document: ${message}`);
+    return;
+  }
+
+  if (!document || !isCwl(document)) {
     void vscode.window.showWarningMessage('Open a local .cwl file before starting the CWL Metadata Editor.');
     return;
   }
 
-  const document = editor.document;
   const panel = vscode.window.createWebviewPanel(
     'cwlMetadataEditor',
     `CWL Metadata: ${path.basename(document.fileName)}`,
@@ -99,7 +108,7 @@ async function openEditor(context: vscode.ExtensionContext): Promise<void> {
 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
-    vscode.commands.registerCommand('cwlMetadataEditor.open', () => openEditor(context))
+    vscode.commands.registerCommand('cwlMetadataEditor.open', (uri?: vscode.Uri) => openEditor(context, uri))
   );
 }
 
