@@ -19,6 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.3.0] - 2026-09-21
+
+### Added
+
+- Add **Edit CWL Metadata** to the Explorer context menu for local `.cwl` files, opening the metadata form for the selected file even when it is not active or open.
+
+### Changed
+
+- Rename the metadata editor command to **Edit CWL Metadata**.
+
 ## [0.2.0] - 2026-09-21
 
 ### Changed
@@ -36,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial version
 
-[unreleased]: https://github.com/eoap/cwl-metadata-editor/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/eoap/cwl-metadata-editor/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/eoap/cwl-metadata-editor/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/eoap/cwl-metadata-editor/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/eoap/cwl-metadata-editor/releases/tag/v0.1.0

@@ -3,7 +3,7 @@
   "displayName": "CWL Metadata Editor",
   "description": "Edit Schema.org metadata in the active CWL file through a structured form.",
   "icon": "media/icon.png",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "terradue",
   "license": "Apache-2.0",
   "repository": {
@@ -32,7 +32,7 @@
     "commands": [
       {
         "command": "cwlMetadataEditor.open",
-        "title": "CWL: Edit Metadata",
+        "title": "Edit CWL Metadata",
         "category": "CWL"
       }
     ],
@@ -57,6 +57,13 @@
           "command": "cwlMetadataEditor.open",
           "when": "resourceExtname == .cwl",
           "group": "1_modification"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "cwlMetadataEditor.open",
+          "when": "resourceScheme == file && resourceExtname == .cwl && !explorerResourceIsFolder",
+          "group": "navigation"
         }
       ]
     }

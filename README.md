@@ -20,7 +20,8 @@ Read the [full documentation](https://eoap.github.io/cwl-metadata-editor/).
 code --install-extension cwl-metadata-editor.vsix
 ```
 
-Open a local `.cwl` document and run **CWL: Edit Metadata**, or press
+Right-click a local `.cwl` file in the Explorer and select **Edit CWL Metadata**.
+You can also open a local `.cwl` document and run **CWL: Edit CWL Metadata**, or press
 `Ctrl+K Shift+M` (`⌘K Shift+M` on macOS).
 
 ## Development
