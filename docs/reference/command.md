@@ -4,17 +4,19 @@
 
 | Property | Value |
 | --- | --- |
-| Display name | **CWL: Edit Metadata** |
+| Display name | **CWL: Edit CWL Metadata** |
 | Command ID | `cwlMetadataEditor.open` |
 | Activation | Running the command |
 | Available for | A local file whose name ends in `.cwl` |
 | Keyboard shortcut | `Ctrl+K Shift+M` (`⌘K Shift+M` on macOS) |
 | Opens in | A webview panel beside the active editor |
 
-The command is available from the Command Palette, the editor title, and the editor context menu for `.cwl` resources.
+The command is available from the Command Palette, the editor title, and the Explorer and editor context menus for `.cwl` resources.
 The keyboard shortcut is active only while a local `.cwl` text editor has focus.
 
-If there is no active local `.cwl` editor, the command shows a warning and does not open the form.
+Context menu actions use the selected file, even when it is not open. Palette and keyboard actions use the active document.
+
+If there is no selected or active local `.cwl` document, the command shows a warning and does not open the form.
 
 ## Synchronization
 
@@ -24,7 +26,7 @@ If there is no active local `.cwl` editor, the command shows a warning and does 
 - The panel retains its form state when hidden.
 - The document is not saved automatically; normal VS Code save and Auto Save settings apply.
 
-Each panel stays bound to the document that was active when the command ran.
+Each panel stays bound to the document selected when the command ran.
 
 ## Source preservation
 

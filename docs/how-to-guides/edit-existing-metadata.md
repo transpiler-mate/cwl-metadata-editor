@@ -3,7 +3,7 @@
 Use the structured form to revise metadata already stored in a CWL document.
 
 1. Open the local `.cwl` file in VS Code.
-2. Run **CWL: Edit Metadata**.
+2. Run **CWL: Edit CWL Metadata**.
 3. Confirm that the form is pre-filled from the document.
 4. Change the required fields, repeatable entries, or controlled-vocabulary selections.
 5. Review the source-control diff and save the file.

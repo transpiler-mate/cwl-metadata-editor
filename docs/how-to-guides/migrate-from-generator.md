@@ -5,7 +5,7 @@ If you previously used the Transpiler Mate online metadata generator, you can ke
 ## Use an existing generated file
 
 1. Open the `.cwl` file that contains the generator output.
-2. Run **CWL: Edit Metadata**.
+2. Run **CWL: Edit CWL Metadata**.
 3. Confirm that the existing software, license, help, publisher, people, roles, and keyword values appear in the form.
 4. Continue editing. Changes now go straight to the file.
 
