@@ -95,3 +95,4 @@ jobs:
               --verify-tag \
               --generate-notes \
               --title "$GITHUB_REF_NAME"
+          fi
