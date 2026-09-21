@@ -23,7 +23,11 @@ export function parseMetadata(source: string): Metadata {
 export function stringifyMetadata(metadata: Metadata): string {
   const clean: Record<string, unknown> = {};
   for (const key of METADATA_KEYS) if (Object.prototype.hasOwnProperty.call(metadata, key)) clean[key] = metadata[key];
-  return Object.keys(clean).length ? dumpYaml(clean).trimEnd() + '\n\n' : '';
+  if (!Object.keys(clean).length) return '';
+  const rendered = dumpYaml(clean);
+  // A trailing blank content line already separates metadata from the CWL body.
+  // Adding or trimming newlines here would change a final keep-chomp literal block.
+  return rendered + (/\n[ \t]+\n$/.test(rendered) ? '' : '\n');
 }
 
 export function updateMetadata(source: string, metadata: Metadata): string {

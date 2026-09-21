@@ -35,7 +35,7 @@ test('removes interleaved metadata using CST ranges without reformatting CWL', (
     ''
   ].join('\n');
   const updated = updateMetadata(source, { 's:name': 'New' });
-  assert.equal(updated, 's:name: New\n\ncwlVersion: v1.2\nclass: CommandLineTool\ninputs: { message: string } # inline comment\noutputs: {}\n');
+  assert.equal(updated, 's:name: "New"\n\ncwlVersion: v1.2\nclass: CommandLineTool\ninputs: { message: string } # inline comment\noutputs: {}\n');
 });
 
 test('quotes keys and values that begin with a YAML reserved character', () => {
@@ -105,4 +105,69 @@ test('parses people and mixed keyword metadata without losing nested fields', ()
       's:inDefinedTermSet': 'https://example.org/terms'
     }
   ]);
+});
+
+test('double-quotes single-line string values and preserves their contents when reopened', () => {
+  const metadata = {
+    's:name': 'Demo',
+    's:description': 'A "quoted" description\nwith a backslash \\ and tab\tending\n',
+    's:dateCreated': '2026-09-21',
+    's:softwareVersion': '1.0',
+    's:keywords': ['science', '2026-09-21', '', 'true', '42'],
+    's:author': [{ '@type': 's:Person', 's:givenName': 'Ada' }]
+  };
+  const output = updateMetadata('', metadata);
+  assert.ok(output.includes('s:name: "Demo"\n'));
+  assert.ok(output.includes('s:dateCreated: "2026-09-21"\n'));
+  assert.ok(output.includes('s:softwareVersion: "1.0"\n'));
+  assert.ok(output.includes('s:description: |\n  A "quoted" description\n  with a backslash \\ and tab\tending\n'));
+  for (const keyword of metadata['s:keywords']) {
+    assert.ok(output.includes('  - ' + JSON.stringify(keyword) + '\n'));
+  }
+  assert.ok(output.includes('    s:givenName: "Ada"\n'));
+  assert.deepEqual(parseMetadata(output), metadata);
+});
+
+test('quotes root strings while preserving non-string scalar types everywhere', () => {
+  assert.equal(dumpYaml('2026-09-21'), '"2026-09-21"\n');
+  assert.equal(dumpYaml({ count: 42, enabled: true, missing: null }), 'count: 42\nenabled: true\nmissing: null\n');
+  assert.equal(dumpYaml(['text', 42, true, false, null]), '- "text"\n- 42\n- true\n- false\n- null\n');
+  for (const value of [42, true, false, null]) {
+    assert.equal(dumpYaml(value), String(value) + '\n');
+  }
+});
+
+test('uses literal blocks with chomping that preserves multiline contents', () => {
+  const cases = [
+    ['first\nsecond', '|-'],
+    ['first\nsecond\n', '|'],
+    ['first\nsecond\n\n', '|+'],
+    ['  indented\n    deeper\n\nlast  ', '|2-'],
+    ['\nfirst\n\nsecond\n', '|'],
+    ['\n', '|+'],
+    ['\n\n', '|+']
+  ];
+  const body = 'cwlVersion: v1.2\nclass: Workflow\ninputs: {}\noutputs: {}\n';
+  for (const [value, header] of cases) {
+    const metadata = {
+      's:description': value,
+      's:keywords': [value, 'single line'],
+      's:author': [{ 's:description': value, 's:name': 'Ada' }],
+      's:contributor': [{ 's:description': value }]
+    };
+    const output = updateMetadata(body, metadata);
+    assert.ok(output.includes(`s:description: ${header}\n`));
+    assert.ok(output.endsWith(body));
+    assert.deepEqual(parseMetadata(output), metadata, JSON.stringify(value));
+    assert.equal(updateMetadata(output, parseMetadata(output)), output);
+    assert.deepEqual(parseMetadata(updateMetadata('', metadata)), metadata);
+  }
+  assert.equal(dumpYaml('first\nsecond'), '|-\n  first\n  second\n');
+});
+
+test('preserves existing literal content including blank lines and indentation', () => {
+  const source = 's:description: |\n    First line\n\n      Indented line\n    Last line\ns:name: Demo\n';
+  const metadata = parseMetadata(source);
+  assert.equal(metadata['s:description'], 'First line\n\n  Indented line\nLast line\n');
+  assert.deepEqual(parseMetadata(updateMetadata(source, metadata)), metadata);
 });
