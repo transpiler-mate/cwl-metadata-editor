@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://eoap.github.io/cwl-metadata-editor/explanation/transpiler-mate/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Relationship to Transpiler Mate - CWL Metadata Editor - Visual Studio Code Extension</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Relationship to Transpiler Mate";
+        var mkdocs_page_input_path = "explanation/transpiler-mate.md";
+        var mkdocs_page_url = "/cwl-metadata-editor/explanation/transpiler-mate/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../imgs/icon-eoap.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Tutorials</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/first-edit/">Edit metadata for your first CWL tool</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/">How-to guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/edit-existing-metadata/">Edit existing metadata</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/migrate-from-generator/">Move from the online generator</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/command/">Command and editor behavior</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/metadata-fields/">Metadata fields</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">Explanation</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inline-lifecycle/">A shorter metadata lifecycle</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Relationship to Transpiler Mate</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#parity-and-adaptation">Parity and adaptation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#complementary-responsibilities">Complementary responsibilities</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#compatibility-boundary">Compatibility boundary</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">CWL Metadata Editor - Visual Studio Code Extension</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Explanation</li>
+<li class="breadcrumb-item active">Relationship to Transpiler Mate</li>
+<li class="wy-breadcrumbs-aside">
+<a href="https://github.com/eoap/cwl-metadata-editor/edit/master/docs/explanation/transpiler-mate.md">Edit on eoap/cwl-metadata-editor</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="relationship-to-transpiler-mate">Relationship to Transpiler Mate<a class="headerlink" href="#relationship-to-transpiler-mate" title="Permanent link">¶</a></h1>
+<p>The CWL Metadata Editor derives its metadata form from the <a href="https://terradue.github.io/transpiler-mate/how-to-guides/metadata-generator.html">Transpiler Mate metadata generator</a>. It preserves that generator's Schema.org authoring model while adapting the interaction to a document-bound VS Code panel.</p>
+<h2 id="parity-and-adaptation">Parity and adaptation<a class="headerlink" href="#parity-and-adaptation" title="Permanent link">¶</a></h2>
+<p>“1:1 functionality” applies to the metadata the form can author: software details, SPDX licenses, help links, organizations, people, CRediT roles, operating systems, and keyword vocabularies map to the same Schema.org structures.</p>
+<p>It does not mean every standalone browser control is copied literally:</p>
+<table>
+<thead>
+<tr>
+<th>Generator responsibility</th>
+<th>Extension adaptation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start with an empty form or example</td>
+<td>Read the active CWL metadata</td>
+</tr>
+<tr>
+<td>Render generated YAML</td>
+<td>Update the actual document</td>
+</tr>
+<tr>
+<td>Switch between snippet and minimal CWL</td>
+<td>Keep the complete existing CWL document</td>
+</tr>
+<tr>
+<td>Copy or download output</td>
+<td>Use normal editor save and source control</td>
+</tr>
+<tr>
+<td>Show a separate validation summary</td>
+<td>Use field constraints and project validation in the development loop</td>
+</tr>
+<tr>
+<td>Use a standalone theme</td>
+<td>Follow the active VS Code theme</td>
+</tr>
+</tbody>
+</table>
+<p>This boundary is intentional. Reintroducing copy and download controls would preserve the transfer step that the extension is designed to remove.</p>
+<h2 id="complementary-responsibilities">Complementary responsibilities<a class="headerlink" href="#complementary-responsibilities" title="Permanent link">¶</a></h2>
+<p>The two projects occupy consecutive parts of the metadata lifecycle:</p>
+<div class="mermaid">flowchart LR
+    A["CWL Metadata Editor<br/>author in source"] --&gt; B[Annotated CWL]
+    B --&gt; C["Transpiler Mate<br/>convert or publish"]
+    C --&gt; D[CodeMeta]
+    C --&gt; E[DataCite]
+    C --&gt; F[OGC API Record]
+    C --&gt; G[Other publication outputs]
+</div>
+<p>Use the extension for frequent, human-centered metadata maintenance during development. Use Transpiler Mate for machine-oriented transformations, packaging, and publication workflows after the annotated CWL is ready.</p>
+<h2 id="compatibility-boundary">Compatibility boundary<a class="headerlink" href="#compatibility-boundary" title="Permanent link">¶</a></h2>
+<p>The extension recognizes a defined set of <a href="../../reference/metadata-fields/">top-level metadata keys</a>. Transpiler Mate can evolve independently and may support properties or downstream operations that the extension does not expose. Unsupported CWL entries are preserved in the source, but they are not editable through the form.</p>
+<p>When adopting a newer Transpiler Mate convention, check the extension's field reference before assuming that a newly introduced property has a corresponding control.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../inline-lifecycle/" title="A shorter metadata lifecycle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+<p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img "="" alt="Apache License, Version 2.0" src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"/></a></p>
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-code-fork" href="https://github.com/eoap/cwl-metadata-editor" style="color: #fcfcfc"> eoap/cwl-metadata-editor</a>
+</span>
+<span><a href="../inline-lifecycle/" style="color: #fcfcfc">« Previous</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

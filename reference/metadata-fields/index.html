@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://eoap.github.io/cwl-metadata-editor/reference/metadata-fields/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Metadata fields - CWL Metadata Editor - Visual Studio Code Extension</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Metadata fields";
+        var mkdocs_page_input_path = "reference/metadata-fields.md";
+        var mkdocs_page_url = "/cwl-metadata-editor/reference/metadata-fields/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../imgs/icon-eoap.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Tutorials</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/first-edit/">Edit metadata for your first CWL tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/">How-to guides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/edit-existing-metadata/">Edit existing metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/migrate-from-generator/">Move from the online generator</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reference</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../command/">Command and editor behavior</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Metadata fields</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#root-properties">Root properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reusable-objects">Reusable objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#license-and-software-help">License and software help</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#organization">Organization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#person">Person</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#role-wrapped-person">Role-wrapped person</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defined-term">Defined term</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#serialization-rules">Serialization rules</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/">Explanation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/inline-lifecycle/">A shorter metadata lifecycle</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/transpiler-mate/">Relationship to Transpiler Mate</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CWL Metadata Editor - Visual Studio Code Extension</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Reference</li>
+      <li class="breadcrumb-item active">Metadata fields</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eoap/cwl-metadata-editor/edit/master/docs/reference/metadata-fields.md">Edit on eoap/cwl-metadata-editor</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="metadata-fields">Metadata fields<a class="headerlink" href="#metadata-fields" title="Permanent link">&para;</a></h1>
+<p>The editor manages only the following top-level CWL keys. All other top-level entries remain outside the form's model.</p>
+<h2 id="root-properties">Root properties<a class="headerlink" href="#root-properties" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Form section</th>
+<th>CWL key</th>
+<th>Shape</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namespace</td>
+<td><code>$namespaces</code></td>
+<td>mapping</td>
+<td>The form emits <code>s: https://schema.org/</code>.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td><code>@type</code></td>
+<td>string</td>
+<td>The form emits <code>s:SoftwareApplication</code>.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td><code>s:name</code></td>
+<td>string</td>
+<td>Marked required in the form.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td><code>s:description</code></td>
+<td>string</td>
+<td>Marked required; multiline text is supported.</td>
+</tr>
+<tr>
+<td>Creation date</td>
+<td><code>s:dateCreated</code></td>
+<td>date string</td>
+<td>Marked required; entered as <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr>
+<td>Licenses</td>
+<td><code>s:license</code></td>
+<td>object or list</td>
+<td>One item is represented as an object; multiple items as a list.</td>
+</tr>
+<tr>
+<td>Unique identifier</td>
+<td><code>s:identifier</code></td>
+<td>string</td>
+<td>Optional.</td>
+</tr>
+<tr>
+<td>Alternative identifier URLs</td>
+<td><code>s:sameAs</code></td>
+<td>string or list</td>
+<td>Enter one value per line.</td>
+</tr>
+<tr>
+<td>Keywords</td>
+<td><code>s:keywords</code></td>
+<td>list</td>
+<td>Contains strings and/or <code>s:DefinedTerm</code> objects.</td>
+</tr>
+<tr>
+<td>Operating systems</td>
+<td><code>s:operatingSystem</code></td>
+<td>list</td>
+<td>Selected from the bundled list.</td>
+</tr>
+<tr>
+<td>Software requirements</td>
+<td><code>s:softwareRequirements</code></td>
+<td>list</td>
+<td>Enter one runtime, dependency, or URL per line.</td>
+</tr>
+<tr>
+<td>Software version</td>
+<td><code>s:softwareVersion</code></td>
+<td>string</td>
+<td>Marked required; the input expects Semantic Versioning 2.0.0.</td>
+</tr>
+<tr>
+<td>Software help</td>
+<td><code>s:softwareHelp</code></td>
+<td>list</td>
+<td><code>s:CreativeWork</code> objects.</td>
+</tr>
+<tr>
+<td>Publisher</td>
+<td><code>s:publisher</code></td>
+<td>object</td>
+<td>An <code>s:Organization</code>.</td>
+</tr>
+<tr>
+<td>Authors</td>
+<td><code>s:author</code></td>
+<td>list</td>
+<td><code>s:Person</code> or role-wrapped person objects.</td>
+</tr>
+<tr>
+<td>Contributors</td>
+<td><code>s:contributor</code></td>
+<td>list</td>
+<td><code>s:Person</code> or role-wrapped person objects.</td>
+</tr>
+</tbody>
+</table>
+<p>Required markers are form guidance. Because the document is updated incrementally, an in-progress edit can temporarily contain incomplete metadata. Validate the finished document as part of your normal development checks.</p>
+<h2 id="reusable-objects">Reusable objects<a class="headerlink" href="#reusable-objects" title="Permanent link">&para;</a></h2>
+<h3 id="license-and-software-help">License and software help<a class="headerlink" href="#license-and-software-help" title="Permanent link">&para;</a></h3>
+<p>Both use <code>s:CreativeWork</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:CreativeWork</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">s:identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache-2.0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">s:name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache License 2.0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">s:url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://spdx.org/licenses/Apache-2.0.html</span>
+</code></pre></div>
+<p>License name and URL are filled from the chosen SPDX identifier. A help entry uses <code>s:name</code> and <code>s:url</code>; it normally has no identifier.</p>
+<h3 id="organization">Organization<a class="headerlink" href="#organization" title="Permanent link">&para;</a></h3>
+<p>Publishers and affiliations use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:Organization</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">s:name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example Research Institute</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">s:email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contact@example.org</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">s:identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://ror.org/012345678</span>
+</code></pre></div>
+<p>Only the name is marked required for the publisher and affiliation. Email and identifier are optional.</p>
+<h3 id="person">Person<a class="headerlink" href="#person" title="Permanent link">&para;</a></h3>
+<p>Authors and contributors use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:Person</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">s:givenName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ada</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">s:familyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lovelace</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">s:email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ada@example.org</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">s:identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://orcid.org/0000-0000-0000-0000</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">s:affiliation</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:Organization</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">s:name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example Research Institute</span>
+</code></pre></div>
+<p>Given name, family name, email, and affiliation name are marked required.</p>
+<h3 id="role-wrapped-person">Role-wrapped person<a class="headerlink" href="#role-wrapped-person" title="Permanent link">&para;</a></h3>
+<p>When role data is supplied, a person is nested below an <code>s:Role</code>. For an author:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:Role</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">s:roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Software</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">s:startDate</span><span class="p">:</span><span class="w"> </span><span class="s">'2025-01-01'</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">s:author</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:Person</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">s:givenName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ada</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">s:familyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lovelace</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">s:email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ada@example.org</span>
+</code></pre></div>
+<p>A contributor uses <code>s:contributor</code> inside the role. Role name choices follow the bundled CRediT taxonomy; start date, end date, and additional type are optional.</p>
+<h3 id="defined-term">Defined term<a class="headerlink" href="#defined-term" title="Permanent link">&para;</a></h3>
+<p>Structured GCMD Science keywords use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:DefinedTerm</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">s:name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATMOSPHERIC TEMPERATURE</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">s:description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A controlled science keyword.</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">s:termCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-concept-id</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">s:inDefinedTermSet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords</span>
+</code></pre></div>
+<p>The hierarchical picker fills the term values. They share the <code>s:keywords</code> list with plain keyword strings.</p>
+<h2 id="serialization-rules">Serialization rules<a class="headerlink" href="#serialization-rules" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Empty optional values and empty objects are omitted.</li>
+<li><code>s:license</code> and <code>s:sameAs</code> use a scalar/object when there is one value and a list when there are several.</li>
+<li><code>s:operatingSystem</code>, <code>s:softwareRequirements</code>, <code>s:softwareHelp</code>, <code>s:author</code>, and <code>s:contributor</code> are emitted as lists when present.</li>
+<li>Duplicate text and Earth Observation keywords are removed case-insensitively after trimming.</li>
+<li>Metadata keys are written in the order shown in the root-properties table.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../command/" class="btn btn-neutral float-left" title="Command and editor behavior"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../explanation/" class="btn btn-neutral float-right" title="Explanation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/eoap/cwl-metadata-editor" class="fa fa-code-fork" style="color: #fcfcfc"> eoap/cwl-metadata-editor</a>
+        </span>
+    
+    
+      <span><a href="../command/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../explanation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

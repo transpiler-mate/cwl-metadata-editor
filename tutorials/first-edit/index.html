@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://eoap.github.io/cwl-metadata-editor/tutorials/first-edit/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Edit metadata for your first CWL tool - CWL Metadata Editor - Visual Studio Code Extension</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Edit metadata for your first CWL tool";
+        var mkdocs_page_input_path = "tutorials/first-edit.md";
+        var mkdocs_page_url = "/cwl-metadata-editor/tutorials/first-edit/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../imgs/icon-eoap.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Tutorials</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Edit metadata for your first CWL tool</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#before-you-begin">Before you begin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-create-a-cwl-file">1. Create a CWL file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-open-the-metadata-editor">2. Open the metadata editor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-describe-the-software">3. Describe the software</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-add-attribution">4. Add attribution</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-add-discovery-terms">5. Add discovery terms</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-review-the-result">6. Review the result</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next steps</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/">How-to guides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/edit-existing-metadata/">Edit existing metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/migrate-from-generator/">Move from the online generator</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/command/">Command and editor behavior</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/metadata-fields/">Metadata fields</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/">Explanation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/inline-lifecycle/">A shorter metadata lifecycle</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/transpiler-mate/">Relationship to Transpiler Mate</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CWL Metadata Editor - Visual Studio Code Extension</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Edit metadata for your first CWL tool</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eoap/cwl-metadata-editor/edit/master/docs/tutorials/first-edit.md">Edit on eoap/cwl-metadata-editor</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="edit-metadata-for-your-first-cwl-tool">Edit metadata for your first CWL tool<a class="headerlink" href="#edit-metadata-for-your-first-cwl-tool" title="Permanent link">&para;</a></h1>
+<p>In this tutorial, you will add publication-ready Schema.org metadata to a small CWL command-line tool without leaving VS Code.</p>
+<h2 id="before-you-begin">Before you begin<a class="headerlink" href="#before-you-begin" title="Permanent link">&para;</a></h2>
+<p>You need Visual Studio Code and the CWL Metadata Editor extension installed. If you are installing a locally built package, run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">code --install-extension cwl-metadata-editor.vsix</span>
+</code></pre></div>
+<h2 id="1-create-a-cwl-file">1. Create a CWL file<a class="headerlink" href="#1-create-a-cwl-file" title="Permanent link">&para;</a></h2>
+<p>Create <code>hello.cwl</code> and paste this document:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CommandLineTool</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">baseCommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">inputBinding</span><span class="p">:</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>Keep <code>hello.cwl</code> active in the editor.</p>
+<h2 id="2-open-the-metadata-editor">2. Open the metadata editor<a class="headerlink" href="#2-open-the-metadata-editor" title="Permanent link">&para;</a></h2>
+<p>Press <code>Ctrl+K Shift+M</code> (<code>⌘K Shift+M</code> on macOS) or open the Command Palette and run <strong>CWL: Edit CWL Metadata</strong>. You can also use the command from the editor title or the <code>.cwl</code> file's Explorer or editor context menu (<strong>Edit CWL Metadata</strong>).</p>
+<p>The form opens beside <code>hello.cwl</code>. Because the file has no supported metadata yet, its fields are initially empty.</p>
+<p><img alt="Open the metadata editor" src="../../imgs/01.png" title="Open the metadata editor" /></p>
+<h2 id="3-describe-the-software">3. Describe the software<a class="headerlink" href="#3-describe-the-software" title="Permanent link">&para;</a></h2>
+<p>Enter the following values in <strong>Software</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>Hello CWL</code></td>
+</tr>
+<tr>
+<td>Creation date</td>
+<td>today's date</td>
+</tr>
+<tr>
+<td>Description</td>
+<td><code>Print a supplied message.</code></td>
+</tr>
+<tr>
+<td>Software version</td>
+<td><code>1.0.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Choose an operating system if the tool is platform-specific, and list any runtime or dependency under <strong>Software requirements</strong>.</p>
+<p>Watch <code>hello.cwl</code> as you edit. The metadata block appears in the document automatically; there is no Generate or Copy step.</p>
+<h2 id="4-add-attribution">4. Add attribution<a class="headerlink" href="#4-add-attribution" title="Permanent link">&para;</a></h2>
+<p>Under <strong>Licenses</strong>, choose an SPDX identifier. Add a <strong>Software help</strong> entry with a name and URL.</p>
+<p>Enter the publisher organization. When its name matches a Research Organization Registry (ROR) record, the editor can suggest its identifier. Then complete the first author. Use <strong>Use publisher affiliation</strong> if the author's organization is the publisher.</p>
+<p>Optionally choose a CRediT role. Supplying role details makes the author a Schema.org <code>Role</code> whose <code>s:author</code> value is the person.</p>
+<h2 id="5-add-discovery-terms">5. Add discovery terms<a class="headerlink" href="#5-add-discovery-terms" title="Permanent link">&para;</a></h2>
+<p>Add free-text keywords, select Earth Observation keywords, or add a GCMD Science keyword through the hierarchical picker. Structured GCMD entries are written as Schema.org <code>DefinedTerm</code> values.</p>
+<h2 id="6-review-the-result">6. Review the result<a class="headerlink" href="#6-review-the-result" title="Permanent link">&para;</a></h2>
+<p>Return to <code>hello.cwl</code>. Its CWL implementation is unchanged, while the file now begins with metadata similar to:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">$namespaces</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">s</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://schema.org/</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s:SoftwareApplication</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">s:name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hello CWL</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">s:description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Print a supplied message.</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">s:dateCreated</span><span class="p">:</span><span class="w"> </span><span class="s">'2026-08-01'</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nt">s:softwareVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CommandLineTool</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nt">baseCommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nt">inputBinding</span><span class="p">:</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>The complete block will also contain the license, help, publisher, author, and keyword values you supplied.</p>
+<p>Save the file and inspect its source-control diff as you would for any code change. You have now added metadata without moving generated YAML between a browser and your source tree.</p>
+<p><img alt="Review the result" src="../../imgs/02.png" title="Review the result" /></p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn how to safely revise an annotated file in <a href="../../how-to-guides/edit-existing-metadata/">Edit existing metadata</a>.</li>
+<li>See the exact YAML mapping in <a href="../../reference/metadata-fields/">Metadata fields</a>.</li>
+<li>Use <a href="https://terradue.github.io/transpiler-mate/">Transpiler Mate</a> when you are ready to convert or publish the metadata.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Tutorials"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../how-to-guides/" class="btn btn-neutral float-right" title="How-to guides">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/eoap/cwl-metadata-editor" class="fa fa-code-fork" style="color: #fcfcfc"> eoap/cwl-metadata-editor</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../how-to-guides/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
